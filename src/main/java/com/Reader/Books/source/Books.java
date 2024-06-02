@@ -2,6 +2,7 @@ package com.Reader.Books.source;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -19,14 +20,18 @@ public class Books {
 	private String description;
 	
 	@Lob
-	private byte[] file;
-	
-	public byte[] getFile() {
-		return file;
-	}
-	public void setFile(byte[] file) {
-		this.file = file;
-	}
+    @Column(name = "file_data")
+    private byte[] fileData;
+
+    // Constructors, getters, and setters...
+    
+    public byte[] getFileData() {
+        return fileData;
+    }
+
+    public void setFileData(byte[] fileData) {
+        this.fileData = fileData;
+    }
 
 
 	@ManyToOne(fetch=FetchType.LAZY)
