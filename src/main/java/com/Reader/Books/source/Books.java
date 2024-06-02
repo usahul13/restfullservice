@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -17,6 +18,17 @@ public class Books {
 	
 	private String description;
 	
+	@Lob
+	private byte[] file;
+	
+	public byte[] getFile() {
+		return file;
+	}
+	public void setFile(byte[] file) {
+		this.file = file;
+	}
+
+
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JsonIgnore
 	private Reader reader;
